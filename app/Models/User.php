@@ -31,4 +31,12 @@ class User extends Authenticatable
             'two_factor_confirmed_at' => 'datetime',
         ];
     }
+
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+            $user->role_id = 2;
+            $user->plan_id = 1;
+        });   
+    }
 }
